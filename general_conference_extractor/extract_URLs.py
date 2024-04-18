@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 import requests
 import re
 
-def extract_talk_urls(html):
+def extract_talk_urls(url):
     """
     Extracts URLs for talks from a given General Conference year page.
 
