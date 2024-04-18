@@ -16,4 +16,6 @@ d = { 'settings': { 'branch': 'main',
             'general_conference_extractor.core': { 'general_conference_extractor.core.foo': ( 'core.html#foo',
                                                                                               'general_conference_extractor/core.py')},
             'general_conference_extractor.extractURLs': { 'general_conference_extractor.extractURLs.extract_talk_urls': ( 'extract_urls.html#extract_talk_urls',
-                                                                                                                          'general_conference_extractor/extractURLs.py')}}}
+                                                                                                                          'general_conference_extractor/extractURLs.py'),
+                                                          'general_conference_extractor.extractURLs.generate_conference_urls': ( 'extract_urls.html#generate_conference_urls',
+                                                                                                                                 'general_conference_extractor/extractURLs.py')}}}
