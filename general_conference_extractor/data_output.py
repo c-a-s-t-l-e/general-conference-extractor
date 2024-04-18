@@ -24,7 +24,7 @@ import csv
 def save_metadata_to_csv(metadata_records, metadata_csv_path):
     """Saves metadata records to a CSV file."""
     with open(metadata_csv_path, 'w', newline='', encoding='utf-8') as csvfile:
-        fieldnames = ['title', 'author', 'calling', 'month', 'year', 'filename']
+        fieldnames = ['title', 'author', 'calling', 'month', 'year', 'url', 'filename']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         for record in metadata_records:

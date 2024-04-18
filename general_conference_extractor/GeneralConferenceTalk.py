@@ -112,5 +112,8 @@ class GeneralConferenceTalk:
         if match:
             metadata['year'] = int(match.group(1))
             metadata['month'] = int(match.group(2))
+
+        # Include URL
+        metadata['url'] = self.url
         
         return metadata
