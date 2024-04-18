@@ -14,8 +14,7 @@ def save_talk_text(output_folder, talk):
     file_path = os.path.join(output_folder, filename)
     with open(file_path, 'w', encoding='utf-8') as file:
         file.write(talk.text)
-    
+        
     # Update metadata with the filename for reference
     talk.metadata['filename'] = filename
-    print(talk.metadata)
     return talk.metadata
