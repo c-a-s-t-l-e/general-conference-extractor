@@ -110,7 +110,3 @@ class GeneralConferenceTalk:
             metadata['month'] = int(match.group(2))
         
         return metadata
-
-# %% ../nbs/00_GeneralConferenceTalk.ipynb 5
-#| export
-
