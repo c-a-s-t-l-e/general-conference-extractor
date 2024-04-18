@@ -95,12 +95,16 @@ class GeneralConferenceTalk:
         # Extract author if available
         if self.author:
             author_name = soup.find('p', id='author1')
+            if not author_name:
+                author_name = soup.find('p', class_='author-name')
             metadata['author'] = author_name.get_text().replace("By ", "").replace('Sister', '').replace('Elder', '').replace('President', '').replace('\xa0', ' ').strip() if author_name else None
             
 
         # Extract calling if available
         if self.calling:
             author_calling = soup.find('p', id='author2')
+            if not author_calling:
+                author_calling = soup.find('p', class_='author-role')
             metadata['calling'] = author_calling.get_text().strip() if author_calling else None
         
         # Extract year and month from URL
