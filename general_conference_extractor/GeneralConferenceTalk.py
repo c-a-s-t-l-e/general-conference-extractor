@@ -9,6 +9,27 @@ import requests
 import re
 
 class GeneralConferenceTalk:
+    """
+    Represents a talk from the Church of Jesus Christ of Latter-day Saints' General Conference.
+
+    Args:
+        url (str): The URL of the talk's transcript.
+        title (bool, optional): Whether to extract and return the talk's title. Default is True.
+        author (bool, optional): Whether to extract and return the talk's author's name. Default is True.
+        calling (bool, optional): Whether to extract and return the talk's author's calling. Default is True.
+
+    Attributes:
+        url (str): The URL of the talk's transcript.
+        title (bool): Flag to include the title or not.
+        author (bool): Flag to include the author's name or not.
+        calling (bool): Flag to include the author's calling or not.
+        text (str): The extracted text from the talk's transcript.
+        metadata (dict): A dictionary containing metadata about the talk, including title, author, calling, year, month, and URL.
+
+    Methods:
+        _extract_text(self) -> str: Extracts the text content from the talk's transcript.
+        _extract_metadata(self) -> dict: Extracts metadata about the talk from the talk's transcript.
+    """
     def __init__(self, url, title=True, author=True, calling=True):
         self.url = url
         self.title = title
@@ -18,6 +39,12 @@ class GeneralConferenceTalk:
         self.metadata = self._extract_metadata()
 
     def _extract_text(self):
+        """
+        Extracts the text from the given URL using BeautifulSoup and regular expressions.
+
+        Returns:
+            str: The extracted text content of the talk.
+        """
         response = requests.get(self.url)
         soup = BeautifulSoup(response.content, 'html.parser')
 
@@ -81,6 +108,12 @@ class GeneralConferenceTalk:
         return extracted_text
 
     def _extract_metadata(self):
+        """
+        Extracts various metadata from the talk page.
+
+        Returns:
+            dict: A dictionary containing metadata such as title, author, calling, year, month, and url.
+        """
         response = requests.get(self.url)
         soup = BeautifulSoup(response.content, 'html.parser')
         

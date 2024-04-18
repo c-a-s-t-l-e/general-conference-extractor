@@ -9,10 +9,15 @@ import requests
 import re
 
 def extract_talk_urls(html):
-    '''
-    Enter a url for general conference year such as:
-    https://www.churchofjesuschrist.org/study/general-conference/1994/04?lang=eng
-    '''
+    """
+    Extracts URLs for talks from a given General Conference year page.
+
+    Args:
+        url (str): The URL of a General Conference year page, e.g., 'https://www.churchofjesuschrist.org/study/general-conference/1994/04?lang=eng'
+
+    Returns:
+        list[str]: A list of URLs for talks from the given General Conference year page.
+    """
     response = requests.get(str(url))
     soup = BeautifulSoup(response.content, 'html.parser')
 
@@ -36,6 +41,17 @@ def extract_talk_urls(html):
 
 # %% ../nbs/01_Extract_URLs.ipynb 5
 def generate_conference_urls(start_year, end_year=None, most_recent_april=False):
+    """
+    Generates General Conference year page URLs for talks from years within a specified range.
+
+    Args:
+        start_year (int): The start year for the range of years.
+        end_year (int, optional): The end year for the range of General years. Default is None (just produces the URLs for that year provided by start_year).
+        most_recent_april (bool, optional): Decides whether to generate the URL for the October conference of that year depending on if the most recent April conference took place at the provided final year in the range. Default is False.
+
+    Returns:
+        list[str]: A list of General Conference year page URLs from the years within the specified range.
+    """
     conference_urls = []
     months = ['04', '10']
     if end_year is None:
