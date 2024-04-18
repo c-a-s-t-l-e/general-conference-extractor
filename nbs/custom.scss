@@ -1,0 +1,61 @@
+/*-- scss:defaults --*/
+// Background and Text Colors
+$body-bg: #FFFFFF;
+$body-color: #333333;
+$link-color: #E1A95F;
+$input-bg: #F2F2F2;
+$popover-bg: #FFFFFF;
+
+// Fonts
+$font-family-sans-serif: "Open Sans", sans-serif;
+$font-family-monospace: "Source Code Pro", monospace;
+$font-size-root: 16px;
+$toc-font-size: 14px;
+
+$h1-font-size: 2.5em;
+$h2-font-size: 2em;
+$h3-font-size: 1.75em;
+$h4-font-size: 1.5em;
+$h5-font-size: 1.25em;
+
+// Table of Contents
+$toc-color: #333333;
+$toc-active-border: #E1A95F;
+$toc-inactive-border: #EAEAEA;
+
+// Layout
+$content-padding-top: 2rem;
+
+// Navigation
+$navbar-bg: #00394D;
+$navbar-fg: #FFFFFF;
+$navbar-hl: #9BC1BC;
+$sidebar-bg: #FFFFFF;
+$sidebar-fg: #333333;
+$sidebar-hl: #E1A95F;
+$footer-bg: #00394D;
+$footer-fg: #FFFFFF;
+
+// Code Blocks
+$code-block-border-left: #00394D;
+$code-block-bg: #F2F2F2;
+$code-block-bg-padding: 0.4em;
+
+// Code Copy Button
+$btn-code-copy-color: #00394D;
+$btn-code-copy-color-active: #9BC1BC;
+
+// Inline Code
+$code-bg: #EAEAEA;
+$code-color: #333333;
+
+// Callouts
+$callout-border-scale: -10%;
+$callout-icon-scale: 10%;
+$callout-margin-top: 1.25rem;
+$callout-margin-bottom: 1.25rem;
+$callout-color-note: #9BC1BC;
+$callout-color-tip: #647E68;
+$callout-color-caution: #E1A95F;
+$callout-color-warning: #F2CB05;
+$callout-color-important: #C94C4C;

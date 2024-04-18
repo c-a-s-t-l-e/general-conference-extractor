@@ -3,7 +3,8 @@ project:
 
 format:
   html:
-    theme: cosmo
+    page-layout: full
+    theme: custom.scss
     css: styles.css
     toc: true
 
