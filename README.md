@@ -9,7 +9,9 @@
 pip install general_conference_extractor
 ```
 
-## How to use
+## How to Use
+
+#### Example 1 - Just One Talk URL
 
 Here’s what you could do with just one talk URL:
 
@@ -46,8 +48,10 @@ print(talk.text[0:300])
 
     The Restoration of the gospel of Jesus Christ began with an explosion
 
+#### Example 2 - Get All the Talks for One General Conference
+
 Or, here’s an example of extracting every talk from a specific General
-Conference:
+Conference (i.e. April 2017 in this instance):
 
 ``` python
 from general_conference_extractor.extract_URLs import generate_conference_url, extract_talk_urls
@@ -67,4 +71,38 @@ metadata_csv_path = './metadata.csv'
 
 # to produce the respective folders and documents
 # extract_conference_talks(talk_urls, output_folder, metadata_csv_path)
+```
+
+#### Example 3 - Get All the Talks for a Specific Year
+
+``` python
+from general_conference_extractor.extract_URLs import extract_multiconference_talk_urls
+from general_conference_extractor.data_output import extract_conference_talks
+
+# As an example
+multiconference_talk_urls = extract_multiconference_talk_urls(2017,2017)
+
+# Step 2 - Save the talks as txt docs and their metadata in a csv file
+output_folder = './conference_talks'
+metadata_csv_path = './metadata.csv'
+
+# to produce the respective folders and documents
+# extract_conference_talks(multiconference_talk_urls, output_folder, metadata_csv_path)
+```
+
+#### Example 4 - Get All the Talks for a Specific Decade
+
+``` python
+from general_conference_extractor.extract_URLs import extract_multiconference_talk_urls
+from general_conference_extractor.data_output import extract_conference_talks
+
+# As an example
+multiconference_talk_urls = extract_multiconference_talk_urls(2010,2019)
+
+# Step 2 - Save the talks as txt docs and their metadata in a csv file
+output_folder = './conference_talks'
+metadata_csv_path = './metadata.csv'
+
+# to produce the respective folders and documents
+# extract_conference_talks(multiconference_talk_urls, output_folder, metadata_csv_path)
 ```

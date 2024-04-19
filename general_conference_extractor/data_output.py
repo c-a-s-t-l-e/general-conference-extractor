@@ -5,18 +5,12 @@ __all__ = ['save_talk_text', 'save_metadata_to_csv', 'extract_conference_talks']
 
 # %% ../nbs/02_Data_Output.ipynb 3
 import os
+from .GeneralConferenceTalk import GeneralConferenceTalk
 
-def save_talk_text(output_folder, talk):
-    """
-    Saves the text of a talk to a file within a folder representing its year and month.
-
-    Args:
-        output_folder (str): The root folder path where the year and month folders will be created.
-        talk (GeneralConferenceTalk): The talk object containing the talk's text and metadata.
-
-    Returns:
-        dict: The updated talk's metadata with the added 'filename' key and its corresponding value.
-    """
+def save_talk_text(output_folder:str, # The root folder path where the year and month folders will be created.
+                   talk:GeneralConferenceTalk # The talk object containing the talk's text and metadata.
+                  )-> dict: # A dictionary of the updated talk metadata that now has filename
+    """Saves the text of a talk to a file within a folder representing its year and month."""
     year_folder = os.path.join(output_folder, 'y_' + str(talk.metadata['year']))
     if not os.path.exists(year_folder):
         os.makedirs(year_folder)
@@ -37,14 +31,9 @@ def save_talk_text(output_folder, talk):
 # %% ../nbs/02_Data_Output.ipynb 4
 import csv
 
-def save_metadata_to_csv(metadata_records, metadata_csv_path):
-    """
-    Saves metadata records to a CSV file.
-
-    Args:
-        metadata_records (list[dict]): A list of dictionaries containing metadata for each talk.
-        metadata_csv_path (str): The path to the CSV file where the metadata will be saved.
-    """
+def save_metadata_to_csv(metadata_records:list[dict], # A list of dictionaries containing metadata for each talk.
+                         metadata_csv_path:str): # The path to the CSV file where the metadata will be saved.
+    """Saves metadata records to a CSV file."""
     with open(metadata_csv_path, 'w', newline='', encoding='utf-8') as csvfile:
         fieldnames = ['title', 'author', 'calling', 'month', 'year', 'url', 'filename']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -55,15 +44,10 @@ def save_metadata_to_csv(metadata_records, metadata_csv_path):
 # %% ../nbs/02_Data_Output.ipynb 5
 from .GeneralConferenceTalk import GeneralConferenceTalk
 
-def extract_conference_talks(urls, output_folder, metadata_csv_path):
-    """
-    Extracts conference talks from URLs, saves their text to files, and saves metadata to a CSV file.
-
-    Args:
-        urls (list[str]): A list of URLs for conference talks.
-        output_folder (str): The folder path where the talk's text files will be saved.
-        metadata_csv_path (str): The path to the CSV file where the talk's metadata will be saved.
-    """
+def extract_conference_talks(urls:list[str], # A list of URLs for conference talks.
+                             output_folder, # The folder path where the talk's text files will be saved.
+                             metadata_csv_path): # The path to the CSV file where the talk's metadata will be saved.
+    """Extracts conference talks from URLs, saves their text to files, and saves metadata to a CSV file."""
     metadata_records = []
     for url in urls:
         talk = GeneralConferenceTalk(url, title=True, author=True, calling=True)
