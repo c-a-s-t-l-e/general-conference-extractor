@@ -46,22 +46,19 @@ def generate_conference_url(
 # %% ../nbs/01_Extract_URLs.ipynb 7
 def generate_conference_urls(
                             start_year:int, # The start year for the range of years.
-                            end_year:int|None=None, # The end year for the range of General years. Default is None (just produces the URLs for that year provided by start_year).
+                            end_year:int, # The end year for the range of General years.
                             most_recent_april:bool=False # Decides whether to generate the URL for the October conference of that year depending on if the most recent April conference took place at the provided final year in the range. Default is False.
                             ) -> list[str]: #A list of General Conference year page URLs from the years within the specified range.
-    conference_urls = []
     months = ['04', '10']
-    if end_year is None:
-        urls = [generate_conference_url(start_year, month) for month in months]
-    else:
-        urls = []
-        for year in range(start_year, end_year+1, 1):
-            year_urls = [generate_conference_url(year, month) for month in months]
-            urls.append(year_urls)
-        urls = [item for sublist in urls for item in sublist]
-        
-        if most_recent_april == True:
-            urls = urls[:-1]
+    urls = []
+    
+    for year in range(start_year, end_year+1, 1):
+        year_urls = [generate_conference_url(year, month) for month in months]
+        urls.append(year_urls)
+    urls = [item for sublist in urls for item in sublist]
+    
+    if most_recent_april == True:
+        urls = urls[:-1]
             
     return urls
 
