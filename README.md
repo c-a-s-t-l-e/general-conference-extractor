@@ -65,7 +65,7 @@ gen_conf_page_url = generate_conference_url(2017, '04')
 # get all the URLs for the talks that were given for that conference
 talk_urls = extract_talk_urls(gen_conf_page_url)
 
-# Step 2 - Save the talks as txt docs and their metadata in a csv file
+# Step 2 - Save the talks as txt docs in folders and then their respective metadata in a seperate csv file
 output_folder = './conference_talks'
 metadata_csv_path = './metadata.csv'
 
