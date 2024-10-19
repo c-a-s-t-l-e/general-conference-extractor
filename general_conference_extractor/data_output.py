@@ -43,15 +43,16 @@ def save_metadata_to_csv(metadata_records:list[dict], # A list of dictionaries c
 
 # %% ../nbs/02_Data_Output.ipynb 5
 from .GeneralConferenceTalk import GeneralConferenceTalk
+from tqdm import tqdm
 
-def extract_conference_talks(urls:list[str], # A list of URLs for conference talks.
-                             output_folder, # The folder path where the talk's text files will be saved.
-                             metadata_csv_path): # The path to the CSV file where the talk's metadata will be saved.
-    """Extracts conference talks from URLs, saves their text to files, and saves metadata to a CSV file."""
+def extract_conference_talks(urls: list[str], output_folder, metadata_csv_path):
+    """Extracts conference talks from URLs, saves their text, and metadata to a CSV file."""
     metadata_records = []
-    for url in urls:
+    
+    # Add tqdm to the URL processing loop
+    for url in tqdm(urls, desc="Processing conference talks"):
         talk = GeneralConferenceTalk(url, title=True, author=True, calling=True)
         talk_metadata = save_talk_text(output_folder, talk)
         metadata_records.append(talk_metadata)
-    
+
     save_metadata_to_csv(metadata_records, metadata_csv_path)
